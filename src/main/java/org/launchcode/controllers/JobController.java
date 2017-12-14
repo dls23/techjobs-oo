@@ -53,7 +53,7 @@ public class JobController {
         Location ourLocation = jobData.getLocations().findById(jobForm.getLocationId());
         PositionType ourPositionType = jobData.getPositionTypes().findById(jobForm.getPositionTypeId());
         CoreCompetency ourCoreCompetency = jobData.getCoreCompetencies().findById(jobForm.getcoreCompetenciesId());
-        
+
         Job job = new Job();
         job.setName(jobForm.getName());
         job.setEmployer(ourEmployer);
@@ -64,6 +64,7 @@ public class JobController {
 
         jobData.add(job);
         model.addAttribute("job", job);
-        return "job-detail";
+
+        return "redirect:/job/?id=" + job.getId();
     }
 }
